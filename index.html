@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+                    
+            function computerPlay() {
+                let compOptions = ['ROCK', 'PAPER', 'SCISSORS'];
+                let compSelect = compOptions[Math.floor(Math.random() * compOptions.length)];
+                return compSelect;
+            }
+
+            function playerPlay() {
+                let playerInput = prompt("Rock, Paper, or Scissors?");
+                let playerText = playerInput.toUpperCase();
+                if (playerText == 'ROCK' || playerText == 'PAPER' || playerText == 'SCISSORS') {
+                    return playerText
+                } else {
+                    alert("Please check your spelling and try again!")
+                playerPlay();
+                }
+            }
+            
+            function playRound(computerSelection, playerSelection) {
+                if ((computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+                    (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') || 
+                    (computerSelection === 'PAPER' && playerSelection === 'ROCK')) {
+                    computerScore++;
+                    console.log(lose);
+                } else if (computerSelection === playerSelection) {
+                    console.log(draw);
+                } else {
+                    playerScore++;
+                    console.log(win);
+                }
+            }
+
+            function game() {
+                for (var i = 1; i < 6; i++)  {
+                    console.log("Round: " + i);
+                    let computerSelection = computerPlay();
+                    let playerSelection = playerPlay();
+                    playRound(computerSelection, playerSelection);
+                    console.log("Computer chose " + computerSelection + " / Player chose " +
+                         playerSelection);
+                    console.log("Computer score is: " + computerScore + " / Player score is: " +
+                         playerScore);
+                }
+                if (playerScore > computerScore) {
+                alert("Player Score: " + playerScore + "\n" + "Computer Score: " + computerScore +
+                            "\n" + "WINNER WINNER CHICKEN DINNER!!");
+                } else if (computerScore > playerScore) {
+                    alert("Computer Score: " + computerScore + "\n" + "Player Score: " + playerScore +
+                            "\n" + "YOU LOST!!" + "\n" + "WOMP WOMP WOMP");
+                } else {
+                    alert("Player Score: " + playerScore + "\n" + "Computer Score: " + computerScore +
+                            "\n" + "IT'S A TIE!!");
+                }
+            }
+
+            let win = "Player won this round.";
+            let lose = "Computer won this round.";
+            let draw = "This round is a draw.";
+
+            let playerScore = 0;
+            let computerScore = 0;
+            game();
+
+        
+        </script>
+    </body>
+</html>
